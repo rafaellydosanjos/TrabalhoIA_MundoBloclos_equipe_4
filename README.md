@@ -1,1 +1,0 @@
-# TrabalhoIA_MundoBloclos_equipe_X
