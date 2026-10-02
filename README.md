@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Trabalho 1: Mundo dos Blocos de Tamanho Variável via SAT Solver
 
 **Disciplina:** Fundamentos de Inteligência Artificial  
