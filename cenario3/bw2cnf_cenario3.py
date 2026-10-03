@@ -224,6 +224,5 @@ with open(map_filename, "w") as f_map:
     for var_id in sorted(id_to_name.keys()):
         f_map.write(f"{var_id} {id_to_name[var_id]}\n")
 
-print(f"Sucesso! Gerados:")
-print(f" - {cnf_filename} ({var_count} variáveis, {len(clauses)} cláusulas)")
-print(f" - {map_filename}")
+print(f"Gerado: {var_count}} variaveis, {len(clauses)} clausulas")
+print(f"Arquivos: {cnf_filename}, {map_filename}")
