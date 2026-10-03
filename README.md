@@ -117,8 +117,28 @@ Para efeitos de avaliação, este repositório contém todos os ficheiros exigid
 * **Resultados das Execuções:** `resultado1.txt`, `resultado2.txt` e `resultado3.txt` correspondentes aos cenários testados.
 * **Documentação Teórica:** Ficheiro fonte `.tex` e o PDF final gerado via Overleaf, detalhando o mapeamento formal e a codificação.
 
-```
 
+### Organização dos Artefactos por Cenário
+
+Os ficheiros gerados pelo programa estão organizados em pastas separadas para cada situação:
+
+#### `cenario1/`
+
+* `trab01_blocos2SAT.cnf`
+* `trab01_blocos2SAT.map`
+* `resultado1.txt`
+
+#### `cenario2/`
+
+* `trab01_blocos2SAT.cnf`
+* `trab01_blocos2SAT.map`
+* `resultado2.txt`
+
+#### `cenario3/`
+
+* `trab01_blocos2SAT.cnf`
+* `trab01_blocos2SAT.map`
+* `resultado3.txt`
 
 ```
 >>>>>>> 98cd934012161eb976816d916f1acef2cade6381
