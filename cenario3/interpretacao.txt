@@ -1,0 +1,32 @@
+==================================================
+      PLANO ENCONTRADO - SITUAÇÃO 3 (CENÁRIO 3)   
+==================================================
+Passo t=0: Mover bloco 'd' para CIMA de 'c' no ponto p=0
+Passo t=1: Mover bloco 'b' para CIMA de 'a' no ponto p=1
+Passo t=2: Mover bloco 'a' para CIMA de 'b' no ponto p=2
+Passo t=3: Mover bloco 'd' para MESA no ponto p=3
+Passo t=4: Mover bloco 'a' para CIMA de 'b' no ponto p=0
+Passo t=5: Mover bloco 'b' para CIMA de 'a' no ponto p=4
+Passo t=6: Mover bloco 'b' para CIMA de 'a' no ponto p=1
+
+--------------------------------------------------
+ESTADO FINAL ALCANÇADO (t=7):
+  Bloco 'a': ponto p=0, nível l=1
+  Bloco 'b': ponto p=1, nível l=1
+  Bloco 'c': ponto p=0, nível l=0
+  Bloco 'd': ponto p=3, nível l=0
+
+RELAÇÕES 'on' DERIVADAS NO ESTADO FINAL:
+  - Bloco 'c' está apoiado diretamente na MESA
+  - Bloco 'a' está apoiado sobre: c
+  - Bloco 'b' está apoiado sobre: c
+  - Bloco 'd' está apoiado diretamente na MESA
+
+============================================================
+      EXPLICAÇÃO DO RESULTADO PARA HUMANOS
+============================================================
+O plano sequencial gerado pelo solver SAT resolve com sucesso a Situação 3 executando exatamente 7 movimentos ao longo de 7 unidades de tempo. Inicialmente, o bloco 'd' (tamanho 3) encontra-se em formato de ponte sobre os blocos 'a' e 'b'. Para liberar o topo de 'a' e 'b' sem violar as regras de espaço, o bloco 'd' é temporariamente deslocado para cima de 'c' (em p=0). Em seguida, os blocos menores são reorganizados para desocupar a região central da mesa, permitindo que 'd' possa finalmente ser posicionado diretamente na mesa.
+
+Nas etapas finais, os blocos de tamanho unitário 'a' e 'b' são empilhados lado a lado no nível 1 sobre o bloco 'c' (ocupando as posições p=0 e p=1, respectivamente), enquanto o bloco 'd' é ajustado para a sua posição final na mesa no ponto p=3 (nível 0). Dessa forma, todas as relações de estabilidade física, suporte mínimo e ausência de sobreposição horizontal foram satisfeitas, concluindo a transição do estado inicial S0 ao estado meta S7 sem qualquer colisão de blocos.
+============================================================
+
