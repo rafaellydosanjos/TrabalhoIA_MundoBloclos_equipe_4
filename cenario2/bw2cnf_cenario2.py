@@ -224,4 +224,5 @@ with open(map_filename, "w") as f:
     for vid in sorted(inv_var_map.keys()):
         f.write(f"{vid} {inv_var_map[vid]}\n")
 
-print(f"CNF gerado com SUCESSO! ({var_counter} variaveis, {len(clauses)} clausulas)")
+print(f"Gerado: {var_counter} variaveis, {len(clauses)} clausulas")
+print(f"Arquivos: {cnf_filename}, {map_filename}")
