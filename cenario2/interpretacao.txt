@@ -1,0 +1,34 @@
+miguel@miguel-OptiPlex-7050:~/Documents/TrabalhoIA_MundoBloclos_equipe_X/Cenario_2$ python3 interpretar_cenario2.py 
+=================================================================
+PLANO ENCONTRADO - SITUAÇÃO 2 (1 ação por passo de tempo):
+=================================================================
+  t=0: mover bloco 'd' para CIMA de 'a' no ponto p=0
+  t=1: mover bloco 'd' para a MESA no ponto p=3
+  t=2: mover bloco 'd' para a MESA no ponto p=2
+
+=================================================================
+ESTADO FINAL ALCANÇADO (t=3):
+=================================================================
+  Bloco 'a': posição p=0, nível l=1
+  Bloco 'b': posição p=1, nível l=1
+  Bloco 'c': posição p=0, nível l=0
+  Bloco 'd': posição p=2, nível l=0
+
+RELAÇÕES 'on' DERIVADAS no Estado Final:
+  on(a, ['c'], t=3)  -> 'a' está sobre 'c'
+  on(b, ['c'], t=3)  -> 'b' está sobre 'c'
+  on(c, T, t=3)  -> 'c' está na MESA
+  on(d, T, t=3)  -> 'd' está na MESA
+
+=================================================================
+EXPLICAÇÃO DETALHADA DO RESULTADO (SITUAÇÃO 2):
+=================================================================
+
+Parágrafo 1 - Execução do Plano:
+O SAT solver encontrou um plano ótimo de 3 passos de tempo para a Situação 2, respeitando rigorosamente a restrição de no máximo um movimento por unidade de tempo t. A sequência executada é a seguinte: no instante t=0, o bloco 'd' foi deslocado para o topo do bloco 'a' no ponto p=0; em seguida, no instante t=1, o bloco 'd' foi deslocado para a mesa no ponto p=3; em seguida, no instante t=2, o bloco 'd' foi deslocado para a mesa no ponto p=2. Este encadeamento de ações garante que a reorganização do espaço horizontal ocorra sem colisões e sem violação de estabilidade nos níveis superiores.
+
+Parágrafo 2 - Análise do Estado Final:
+No instante final t=3, a configuração dos blocos atinge exatamente o estado meta especificado (S5). O bloco 'c' e o bloco 'd' ocupam de forma contígua a mesa nos pontos p=0 e p=2, respectivamente. Sobre a base formada pelo bloco 'c', reestabeleceu-se a pilha com o bloco 'a' no nível l=1 (ponto p=0) e o bloco 'b' no nível l=1 (ponto p=1), satisfazendo todas as relações 'on' e as dimensões de espaço horizontal estipuladas no problema.
+
+=================================================================
+
