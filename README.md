@@ -4,7 +4,7 @@
 **Professor:** Edjard Mota  
 **Repositório Oficial:** TrabalhoIA_MundoBloclos_equipe_4
 
-## Registo Académico
+## Registo Acadêmico
 * Adrya Vieira
 * Hagata Rodrigues
 * Luís Abdalla
