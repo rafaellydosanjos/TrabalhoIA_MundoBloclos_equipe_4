@@ -224,9 +224,7 @@ for t in range(HORIZON):
             add(-lev[(b, l, t)], lev[(b, l, t + 1)], *movs)
             add(lev[(b, l, t)], -lev[(b, l, t + 1)], *movs)
 
-# ============================================================
 # IMPLEMENTAÇÃO DAS REGRAS DO DOMÍNIO (GANCHOS COMPLETA)
-# ============================================================
 
 def clausulas_exclusao_horizontal():   # 3.3 (C)
     """Dois blocos distintos no mesmo nivel nao cobrem o mesmo slot.
@@ -456,9 +454,7 @@ for gancho in (clausulas_exclusao_horizontal, clausulas_estabilidade,
 
 NUM_VARS = next_id   # depois dos ganchos: a ordem parcial cria variaveis auxiliares
 
-# ============================================================
 # Escrita do CNF (DIMACS) e do mapa
-# ============================================================
 os.makedirs(OUT_DIR, exist_ok=True)
 CNF_PATH = os.path.join(OUT_DIR, 'trab01_blocos2SAT.cnf')
 MAP_PATH = os.path.join(OUT_DIR, 'trab01_blocos2SAT.map')
