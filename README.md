@@ -2,7 +2,7 @@
 
 **Disciplina:** Fundamentos de Inteligência Artificial  
 **Professor:** Edjard Mota  
-**Repositório Oficial:** TrabalhoIA_MundoBloclos_equipe_X  
+**Repositório Oficial:** TrabalhoIA_MundoBloclos_equipe_4
 
 ## Registo Académico
 * Adrya Vieira
