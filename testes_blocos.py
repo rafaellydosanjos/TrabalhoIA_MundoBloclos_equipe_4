@@ -4,12 +4,8 @@ Testes do codificador CNF do Mundo dos Blocos de Tamanho Variavel.
 Uso:  python3 testes_blocos.py                  (acha o gerador bw2cnf*.py sozinho)
       python3 testes_blocos.py bw2cnf_var.py    (ou indica o arquivo)
 
-Deixe este arquivo na MESMA PASTA do gerador (bw2cnf*.py). Pode ser
+Instrução para usuário, deixe este arquivo na MESMA PASTA do gerador (bw2cnf*.py). Pode ser
 executado de qualquer pasta do terminal.
-
-Requer um SAT solver:
-  - pip install python-sat        (recomendado), ou
-  - minisat instalado no PATH
 
 O script troca INITIAL / GOAL / HORIZON no gerador, gera o CNF, resolve e:
   * Testes POSITIVOS: acha o T minimo e valida o plano com um SIMULADOR
@@ -60,9 +56,7 @@ SIT2_S5  = {'d': (3, 0), 'c': (4, 1), 'a': (4, 2), 'b': (5, 2)}
 SIT3_S0  = SIT1_S0
 SIT3_S7  = {'c': (0, 0), 'a': (0, 1), 'b': (1, 1), 'd': (3, 0)}
 
-# ------------------------------------------------------------------
 # Simulador independente (NAO usa o CNF) -- confere a fisica do plano
-# ------------------------------------------------------------------
 def slots(b, p):
     return set(range(p, p + BLOCKS[b]))
 
@@ -108,9 +102,7 @@ def aplicar(est, b, y, p):
     erro = valido(novo)
     return (None, erro) if erro else (novo, None)
 
-# ------------------------------------------------------------------
 # Geracao + resolucao
-# ------------------------------------------------------------------
 def resolver(inicial, meta, H, ordens=()):
     src = open(GERADOR, encoding='utf-8').read()
     marca = MARCA
@@ -174,9 +166,7 @@ def t_minimo(inicial, meta, hmax, ordens=()):
             return H, plano
     return None, None
 
-# ------------------------------------------------------------------
 # Execucao dos testes
-# ------------------------------------------------------------------
 ok = falhas = 0
 def checa(nome, cond, detalhe=''):
     global ok, falhas
@@ -251,7 +241,7 @@ teste_negativo('Acao unica: Sf4 exige 4 passos, nao 3', SIT1_S0, SIT1_SF4, 3)
 teste_negativo('Meta instavel: d sobre a apenas',
                SIT1_S0, {'d': (3, 1), 'b': (0, 0), 'c': (1, 0), 'a': (3, 0)}, 5)
 
-# ---------- Ordem parcial ----------
+#Ordem parcial
 PO_SF4 = [('d na mesa em p=2 antes de a sobre c', {'d': (2, 0)}, {'a': (0, 1)})]
 PO_S5  = [('c sobre d antes de a sobre c', {'c': (4, 1)}, {'a': (4, 2)}),
           ('c sobre d antes de b sobre c', {'c': (4, 1)}, {'b': (5, 2)})]
