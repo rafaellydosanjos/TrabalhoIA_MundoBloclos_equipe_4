@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Testes do codificador CNF do Mundo dos Blocos de Tamanho Variavel.
 
@@ -48,9 +47,7 @@ GERADOR = achar_gerador()
 BLOCKS = {'a': 1, 'b': 1, 'c': 2, 'd': 3}
 MAX_POINT, MAX_LEVEL = 6, 3
 
-# ------------------------------------------------------------------
 # Estados (bloco -> (ponto inicial, nivel)), lidos das figuras do enunciado
-# ------------------------------------------------------------------
 SIT1_S0  = {'c': (0, 0), 'a': (3, 0), 'b': (5, 0), 'd': (3, 1)}
 SIT1_SF1 = {'d': (3, 0), 'a': (4, 1), 'b': (5, 1), 'c': (4, 2)}
 SIT1_SF2 = {'d': (3, 0), 'c': (4, 1), 'a': (4, 2), 'b': (5, 2)}
