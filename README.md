@@ -31,21 +31,64 @@ Para encontrar os planos ótimos (Situações 1, 2 e 3), implementámos regras f
 
 ---
 
-## 3. Instruções de Execução (Passo a Passo)
-
 **Passo 1: Gerar a Codificação CNF**
-Compile o script principal parametrizado para o cenário desejado. Este comando gera automaticamente os ficheiros `trab01_blocos2SAT.cnf` e `trab01_blocos2SAT.map`.
+Execute o script principal informando o cenário desejado. O programa é parametrizado para gerar a codificação CNF correspondente às três situações do trabalho.
+
+Para a **Situação 1**:
+
 ```bash
-python3 bw2cnf_var.py
+python3 bw2cnf_var.py 1
+
+```
+Para a **Situação 2**:
+
+```bash
+python3 bw2cnf_var.py 2
+
+```
+Para a **Situação 3**:
+
+```bash
+python3 bw2cnf_var.py 3
 
 ```
 
+
 **Passo 2: Executar o SAT Solver**
-Submeta o ficheiro CNF gerado ao miniSAT para encontrar a solução (exemplo para a Situação 1).
+Submeta o ficheiro CNF gerado ao miniSAT para encontrar a solução.
+
+Para a **Situação 1**:
 
 ```bash
-minisat trab01_blocos2SAT.cnf resultado1.txt
+minisat cenario1/trab01_blocos2SAT.cnf cenario1/resultado1.txt
 
+```
+
+Para a **Situação 2**:
+
+```bash
+minisat cenario2/trab01_blocos2SAT.cnf cenario2/resultado2.txt
+```
+
+Para a **Situação 3**:
+
+```bash
+minisat cenario3/trab01_blocos2SAT.cnf cenario3/resultado3.txt
+```
+
+### Por que essa alteração?
+
+Porque o código atual não é mais executado simplesmente com:
+
+```bash
+python3 bw2cnf_var.py
+```
+
+### O código fará a seleção de cenário:
+```bash
+python3 bw2cnf_var.py 1  → Situação 1
+python3 bw2cnf_var.py 2  → Situação 2
+python3 bw2cnf_var.py 3  → Situação 3
 ```
 
 **Passo 3: Interpretar a Saída**
@@ -56,21 +99,26 @@ python3 interpretar.py resultado1.txt -verbose
 
 ```
 
+**Passo 4: Executar os Testes**
+O ficheiro `testes_blocos.py` é utilizado como recurso auxiliar para testar a geração e a resolução dos cenários.
+
+```bash
+python3 testes_blocos.py
 ---
+````
 
 ## 4. Mapa de Artefactos Entregues
 
 Para efeitos de avaliação, este repositório contém todos os ficheiros exigidos:
 
 * `README.md`: Explicação da solução e guia de execução (este documento).
-* **Scripts Python:** `bw2cnf_var.py` (código integrado com as regras do domínio) e `interpretar.py`.
+* **Scripts Python:** `bw2cnf_var.py` (código integrado com as regras do domínio), `interpretar.py` e `testes_blocos.py` (script auxiliar para testes e validação dos cenários).
 * **Ficheiros SAT:** `trab01_blocos2SAT.cnf` (cláusulas) e `trab01_blocos2SAT.map` (mapeamento de variáveis).
 * **Resultados das Execuções:** `resultado1.txt`, `resultado2.txt` e `resultado3.txt` correspondentes aos cenários testados.
 * **Documentação Teórica:** Ficheiro fonte `.tex` e o PDF final gerado via Overleaf, detalhando o mapeamento formal e a codificação.
 
 ```
 
-Substitua os dados de identificação e faça o *commit* para o GitHub. A sua secção de infraestrutura e registo documental ficará totalmente alinhada com as exigências de entrega do professor.
 
 ```
 >>>>>>> 98cd934012161eb976816d916f1acef2cade6381
