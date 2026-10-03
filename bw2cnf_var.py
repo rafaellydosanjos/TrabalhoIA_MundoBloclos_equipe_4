@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Mundo dos Blocos de Tamanho Variavel - Codificacao CNF Completa.
 
@@ -19,15 +18,12 @@ import argparse
 import itertools
 import os
 
-# ============================================================
 # Configuracao fixa do dominio
-# ============================================================
 BLOCKS = {'a': 1, 'b': 1, 'c': 2, 'd': 3}   # nome -> comprimento
 TABLE = 'T'
 MAX_POINT = 6                                # pontos 0..6 (6 slots)
 MAX_LEVEL = len(BLOCKS) - 1                  # niveis 0..3
 
-# ============================================================
 # Cenarios do enunciado: bloco -> (ponto inicial, nivel)
 # ------------------------------------------------------------
 # ORDEM PARCIAL (phi1 -<P phi2): "phi2 so pode valer depois que phi1 ja
@@ -47,7 +43,6 @@ CENARIOS = {
         'inicial':   S0_SIT1,
         'meta':      {'c': (0, 0), 'a': (0, 1), 'd': (2, 0), 'b': (5, 0)},
         'horizonte': 4,
-        # Exemplo do Item 4 (LPO): phi1(t) = at(d,2,t), phi2(t) = at(a,0,t)
         #   clausula: NOT at(a,0,t) v at(d,2,0) v ... v at(d,2,t)
         'ordens': [
             ('d na posicao 2 antes de a na posicao 0', {'d': 2}, {'a': 0}),
@@ -73,7 +68,7 @@ CENARIOS = {
             ('b sobre c antes de d na mesa em p=3', {'b': (1, 1)}, {'d': (3, 0)}),
         ],
     },
-    # Demais metas da Situacao 1 (opcionais)
+    # Demais metas Situacao 1 (opcionais)
     '1-sf1': {'descricao': 'Situacao 1: S0 -> Sf1', 'inicial': S0_SIT1, 'horizonte': 9, 'ordens': [],
               'meta': {'d': (3, 0), 'a': (4, 1), 'b': (5, 1), 'c': (4, 2)}},
     '1-sf2': {'descricao': 'Situacao 1: S0 -> Sf2', 'inicial': S0_SIT1, 'horizonte': 10, 'ordens': [],
@@ -152,9 +147,8 @@ def spans_overlap(b1, p1, b2, p2):
 
 validar_configuracao()
 
-# ============================================================
 # Variaveis: at, lev, clr, mv  (on NAO e codificado, e derivado)
-# ============================================================
+
 at, lev, clr, mv = {}, {}, {}, {}
 next_id = 0
 
@@ -186,9 +180,8 @@ def moves_of(b, t):
     """Todas as acoes que movem o bloco b no passo t."""
     return [v for (bb, y, p, tt), v in mv.items() if bb == b and tt == t]
 
-# ============================================================
 # 3.1 ESTADO INICIAL (t = 0)
-# ============================================================
+
 for b, L in BLOCKS.items():
     p0, l0 = INITIAL[b]
     for p in valid_positions(L):
@@ -196,16 +189,14 @@ for b, L in BLOCKS.items():
     for l in range(MAX_LEVEL + 1):
         add(lev[(b, l, 0)] if l == l0 else -lev[(b, l, 0)])
 
-# ============================================================
 # 3.2 META (t = HORIZON) - blocos fora de GOAL ficam livres
-# ============================================================
+
 for b, (pg, lg) in GOAL.items():
     add(at[(b, pg, HORIZON)])
     add(lev[(b, lg, HORIZON)])
 
-# ============================================================
 # 3.3 (A),(B) UNICIDADE: cada bloco em exatamente uma posicao e um nivel
-# ============================================================
+
 for t in range(HORIZON + 1):
     for b, L in BLOCKS.items():
         ps = [at[(b, p, t)] for p in valid_positions(L)]
@@ -219,16 +210,13 @@ for t in range(HORIZON + 1):
             for j in range(i + 1, len(ls)):
                 add(-ls[i], -ls[j])                # (B) no maximo um nivel
 
-# ============================================================
 # 3.5 FRAME AXIOMS (at e lev): so mudam se o proprio bloco for movido
-# ============================================================
+
 for t in range(HORIZON):
     for b, L in BLOCKS.items():
         movs = moves_of(b, t)
         for p in valid_positions(L):
-            # at(b,p,t) persiste, a menos que b seja movido
             add(-at[(b, p, t)], at[(b, p, t + 1)], *movs)
-            # at(b,p,t+1) so surge se alguma acao colocar b em p
             add(at[(b, p, t)], -at[(b, p, t + 1)],
                 *[mv[(b, y, p, t)] for y in [x for x in BLOCKS if x != b] + [TABLE]])
         for l in range(MAX_LEVEL + 1):
