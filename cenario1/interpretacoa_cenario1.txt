@@ -1,0 +1,34 @@
+=================================================================
+PLANO ENCONTRADO (1 ação por passo de tempo):
+=================================================================
+  t=0: mover bloco 'd' para CIMA de 'c' no ponto p=0
+  t=1: mover bloco 'a' para CIMA de 'b' no ponto p=5
+  t=2: mover bloco 'd' para a MESA no ponto p=2
+  t=3: mover bloco 'a' para CIMA de 'c' no ponto p=0
+
+=================================================================
+ESTADO FINAL (t=4):
+=================================================================
+  Bloco 'a': posição p=0, nível l=1
+  Bloco 'b': posição p=5, nível l=0
+  Bloco 'c': posição p=0, nível l=0
+  Bloco 'd': posição p=2, nível l=0
+
+RELAÇÕES 'on' DERIVADAS no Estado Final:
+  on(a, ['c'], t=4)  -> 'a' está sobre 'c'
+  on(b, T, t=4)  -> 'b' está na MESA
+  on(c, T, t=4)  -> 'c' está na MESA
+  on(d, T, t=4)  -> 'd' está na MESA
+
+=================================================================
+EXPLICAÇÃO DETALHADA DO RESULTADO (TEXTO LIVRE):
+=================================================================
+
+Parágrafo 1 - Execução do Plano:
+O SAT solver encontrou uma solução satisfatória composta por 4 movimentos sequenciais, garantindo rigorosamente a restrição de uma única ação por unidade de tempo t. A execução inicia em t=0 onde no instante t=0, o bloco 'd' foi movido para o topo do bloco 'c' na posição horizontal p=0; em seguida, no instante t=1, o bloco 'a' foi movido para o topo do bloco 'b' na posição horizontal p=5; em seguida, no instante t=2, o bloco 'd' foi movido para a mesa na posição horizontal p=2; em seguida, no instante t=3, o bloco 'a' foi movido para o topo do bloco 'c' na posição horizontal p=0. Essa sequência elimina interdependências físicas e conflitos horizontais entre os blocos, respeitando as pré-condições de topo livre (clear) e os critérios de estabilidade estrutural.
+
+Parágrafo 2 - Análise do Estado Final:
+Ao atingir o instante final t=4, a configuração espacial dos blocos corresponde exatamente ao estado meta estabelecido (Sf4). Observa-se que o bloco 'c' permanece apoiado diretamente na mesa no ponto p=0, servindo de base para o bloco 'a', que foi empilhado sobre ele no nível l=1. Simultaneamente, o bloco 'd' encontra-se posicionado de forma estável na mesa a partir da posição p=2, enquanto o bloco 'b' permanece na mesa na posição p=5. Dessa forma, todas as relações de suporte e o arranjo horizontal satisfazem perfeitamente os objetivos do cenário.
+
+=================================================================
+
